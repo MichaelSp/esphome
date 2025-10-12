@@ -143,6 +143,7 @@
 // IDF-specific feature flags
 #ifdef USE_ESP_IDF
 #define USE_MQTT_IDF_ENQUEUE
+#define USE_OPTOLINK_VITOWIFI_PROTOCOL P300
 #endif
 
 // ESP32-specific feature flags

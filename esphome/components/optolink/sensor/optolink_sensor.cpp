@@ -1,4 +1,4 @@
-#ifdef USE_ARDUINO
+#if defined(USE_ARDUINO) || defined(USE_ESP_IDF)
 
 #include "optolink_sensor.h"
 #include "esphome/core/application.h"

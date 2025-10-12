@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef USE_ARDUINO
+#if defined(USE_ARDUINO) || defined(USE_ESP_IDF)
 
 #include "esphome/components/text_sensor/text_sensor.h"
 #include "../optolink.h"

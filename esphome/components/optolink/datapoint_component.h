@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef USE_ARDUINO
+#if defined(USE_ARDUINO) || defined(USE_ESP_IDF)
 
 #include "esphome/core/log.h"
 #include "esphome/core/string_ref.h"

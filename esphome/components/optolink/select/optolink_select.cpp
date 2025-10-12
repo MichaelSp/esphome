@@ -1,4 +1,4 @@
-#ifdef USE_ARDUINO
+#if defined(USE_ARDUINO) || defined(USE_ESP_IDF)
 
 #include "optolink_select.h"
 #include "../optolink.h"

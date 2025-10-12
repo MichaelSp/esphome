@@ -1,18 +1,9 @@
-from esphome import core, pins
 import esphome.codegen as cg
 import esphome.config_validation as cv
-from esphome.const import (
-    CONF_ADDRESS,
-    CONF_BYTES,
-    CONF_DIV_RATIO,
-    CONF_ID,
-    CONF_LOGGER,
-    CONF_PROTOCOL,
-    CONF_RX_PIN,
-    CONF_TX_PIN,
-    CONF_TYPE,
-    CONF_UPDATE_INTERVAL,
-)
+from esphome import core, pins
+from esphome.const import (CONF_ADDRESS, CONF_BYTES, CONF_DIV_RATIO, CONF_ID,
+                           CONF_LOGGER, CONF_PROTOCOL, CONF_RX_PIN,
+                           CONF_TX_PIN, CONF_TYPE, CONF_UPDATE_INTERVAL)
 from esphome.core import CORE
 
 CODEOWNERS = ["@j0ta29"]
@@ -155,7 +146,7 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_LOGGER, default=False): cv.boolean,
         }
     ).extend(cv.COMPONENT_SCHEMA),
-    cv.only_with_arduino,
+    # allow both Arduino and ESP-IDF frameworks on supported chips
     cv.only_on(["esp32", "esp8266"]),
     required_on_esp32(CONF_RX_PIN),
     required_on_esp32(CONF_TX_PIN),

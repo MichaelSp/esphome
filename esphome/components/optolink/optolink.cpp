@@ -1,4 +1,4 @@
-#ifdef USE_ARDUINO
+#if defined(USE_ARDUINO) || defined(USE_ESP_IDF)
 
 #include "esphome/core/defines.h"
 #include "esphome/core/log.h"
@@ -24,10 +24,14 @@ void Optolink::setup() {
     set_state_("communication state unknown");
   }
 
-#if defined(USE_ESP32)
+#if defined(USE_ARDUINO) && defined(USE_ESP32)
   VitoWiFi.setup(&Serial, rx_pin_, tx_pin_);
-#elif defined(USE_ESP8266)
+#elif defined(USE_ARDUINO) && defined(USE_ESP8266)
   VitoWiFi.setup(&Serial);
+#elif defined(USE_ESP_IDF)
+  // For ESP-IDF builds the VitoWiFi library may handle UART internally or accept a nullptr
+  // to select a default UART. Pass nullptr to allow library-specific handling.
+  VitoWiFi.setup(nullptr);
 #endif
 }
 
